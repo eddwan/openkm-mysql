@@ -53,10 +53,15 @@
             username="openkm" password="*****" driverClassName="com.mysql.jdbc.Driver"
             url="jdbc:mysql://localhost:3306/okmdb?autoReconnect=true&amp;useUnicode=true&amp;characterEncoding=UTF8"/> -->
                 
-    <Resource name="jdbc/OpenKMDS" auth="Container" type="javax.sql.DataSource"
+    <!-- <Resource name="jdbc/OpenKMDS" auth="Container" type="javax.sql.DataSource"
           maxActive="100" maxIdle="30" maxWait="10000" validationQuery="select 1"
           username="postgres" password="postgres" driverClassName="org.postgresql.Driver"
-          url="${jdbc.url}"/>
+          url="${jdbc.url}"/> -->
+
+<Resource name="jdbc/OpenKMDS" auth="Container" type="javax.sql.DataSource"
+          maxActive="100" maxIdle="30" maxWait="10000" validationQuery="select 1"
+          username="root" password="!QAZ2wsx#EDC" driverClassName="com.mysql.jdbc.Driver"
+          url="jdbc:mysql://host.docker.internal:3306/okmdb?autoReconnect=true&amp;useUnicode=true&amp;characterEncoding=UTF8"/>
 
     <Resource name="mail/OpenKM" auth="Container" type="javax.mail.Session"
               mail.smtp.host="localhost" mail.from="testing@openkm.com"/>

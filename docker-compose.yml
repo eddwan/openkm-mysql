@@ -4,25 +4,21 @@ services:
 
     openkm:
         build: .
-        environment:
-            - "JAVA_OPTS=-Djdbc.url=jdbc:postgresql://openkm_db:5432/openkm"
+        volumes:
+            - ./okmrepo:/mnt/okmrepo
         ports:
             - 8080:8080
             - 2002:2002
         depends_on:
             - openkm_db
     openkm_db:
-        image: postgres:9.5
+        image: mysql:5.7
+        restart: always
         volumes:
-            - openkm_vol:/var/lib/postgresql/data/pgdata
+            - ./data:/var/lib/mysql
         environment:
-            - POSTGRES_PASSWORD=postgres
-            - POSTGRES_USER=postgres
-            - POSTGRES_DB=openkm
-            - PGDATA=/var/lib/postgresql/data/pgdata
+            - MYSQL_ROOT_PASSWORD=!QAZ2wsx#EDC
+            - MYSQL_DATABASE=okmdb
         ports:
-            - 5433:5432            
+            - 3306:3306
 
-volumes:
-    openkm_vol: {}
-        
